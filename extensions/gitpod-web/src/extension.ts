@@ -31,7 +31,10 @@ export async function activate(context: vscode.ExtensionContext) {
 	if (!gitpodContext) {
 		return;
 	}
-	registerDesktop(gitpodContext);
+
+	logContextInfo(gitpodContext);
+
+	registerDesktop();
 	registerAuth(gitpodContext);
 	registerPorts(gitpodContext);
 	registerTasks(gitpodContext, (options, parentTerminal) => {
@@ -62,6 +65,22 @@ export function deactivate() {
 		return;
 	}
 	return gitpodContext.dispose();
+}
+
+function logContextInfo(context: GitpodExtensionContext) {
+	const output = context.output;
+
+	const contextUrl = process.env['GITPOD_WORKSPACE_CONTEXT_URL'];
+	output.appendLine(`GITPOD_WORKSPACE_CONTEXT_URL: ${contextUrl}`);
+
+	const instanceId = process.env['GITPOD_INSTANCE_ID'];
+	output.appendLine(`GITPOD_INSTANCE_ID: ${instanceId}`);
+
+	const workspaceUrl = process.env['GITPOD_WORKSPACE_URL'];
+	output.appendLine(`GITPOD_WORKSPACE_URL: ${workspaceUrl}`);
+
+	const workspaceContext = process.env['GITPOD_WORKSPACE_CONTEXT'];
+	output.appendLine(`GITPOD_WORKSPACE_CONTEXT: ${workspaceContext}`);
 }
 
 export function registerAuth(context: GitpodExtensionContext): void {
@@ -1196,7 +1215,7 @@ export function registerExtensionManagement(context: GitpodExtensionContext): vo
 	context.subscriptions.push(vscode.extensions.onDidChange(() => validateGitpodFile()));
 }
 
-export async function registerDesktop(_: GitpodExtensionContext): Promise<void> {
+async function registerDesktop(): Promise<void> {
 	const config = vscode.workspace.getConfiguration('gitpod.openInStable');
 	if (config.get<boolean>('neverPrompt') === true) {
 		return;
