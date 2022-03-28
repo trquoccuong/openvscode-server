@@ -206,7 +206,7 @@ export class GitpodExtensionContext implements vscode.ExtensionContext {
 }
 
 export async function createGitpodExtensionContext(context: vscode.ExtensionContext): Promise<GitpodExtensionContext | undefined> {
-	const output = vscode.window.createOutputChannel('Gitpod Workspace');
+	const output = vscode.window.createOutputChannel('Snapbrillia Workspace');
 	const devMode = context.extensionMode === vscode.ExtensionMode.Development || !!process.env['VSCODE_DEV'];
 
 	const supervisor = new SupervisorConnection(context);
@@ -222,7 +222,7 @@ export async function createGitpodExtensionContext(context: vscode.ExtensionCont
 			contentAvailable = result.getAvailable();
 		} catch (e) {
 			if (e.code === grpc.status.UNAVAILABLE) {
-				output.appendLine('It does not look like we are running in a Gitpod workspace, supervisor is not available.');
+				output.appendLine('It does not look like we are running in a Snapbrillia workspace, supervisor is not available.');
 				return undefined;
 			}
 			console.error('cannot maintain connection to supervisor', e);
@@ -363,7 +363,7 @@ export async function registerWorkspaceCommands(context: GitpodExtensionContext)
 		return vscode.env.openExternal(vscode.Uri.parse(url));
 	}));
 	context.subscriptions.push(vscode.commands.registerCommand('gitpod.open.documentation', () => {
-		const url = 'https://www.gitpod.io/docs';
+		const url = 'https://www.snapbrillia.com/docs';
 		context.fireAnalyticsEvent({
 			eventName: 'vscode_execute_command_gitpod_open_link',
 			properties: { url }
@@ -371,7 +371,7 @@ export async function registerWorkspaceCommands(context: GitpodExtensionContext)
 		return vscode.env.openExternal(vscode.Uri.parse(url));
 	}));
 	context.subscriptions.push(vscode.commands.registerCommand('gitpod.open.twitter', () => {
-		const url = 'https://twitter.com/gitpod';
+		const url = 'https://twitter.com/snapbrillia';
 		context.fireAnalyticsEvent({
 			eventName: 'vscode_execute_command_gitpod_open_link',
 			properties: { url }
@@ -379,7 +379,7 @@ export async function registerWorkspaceCommands(context: GitpodExtensionContext)
 		return vscode.env.openExternal(vscode.Uri.parse(url));
 	}));
 	context.subscriptions.push(vscode.commands.registerCommand('gitpod.open.discord', () => {
-		const url = 'https://www.gitpod.io/chat';
+		const url = 'https://www.snapbrillia.com/chat';
 		context.fireAnalyticsEvent({
 			eventName: 'vscode_execute_command_gitpod_open_link',
 			properties: { url }
@@ -387,7 +387,7 @@ export async function registerWorkspaceCommands(context: GitpodExtensionContext)
 		return vscode.env.openExternal(vscode.Uri.parse(url));
 	}));
 	context.subscriptions.push(vscode.commands.registerCommand('gitpod.reportIssue', () => {
-		const url = 'https://github.com/gitpod-io/gitpod/issues/new/choose';
+		const url = 'https://github.com/snapbrillia/snapbrillia/issues/new/choose';
 		context.fireAnalyticsEvent({
 			eventName: 'vscode_execute_command_gitpod_open_link',
 			properties: { url }
@@ -1064,7 +1064,7 @@ async function updateIpcHookCli(context: GitpodExtensionContext): Promise<void> 
 			req.end();
 		});
 	} catch (e) {
-		context.output.appendLine('Failed to update gitpod ipc hook cli: ' + e);
-		console.error('Failed to update gitpod ipc hook cli:', e);
+		context.output.appendLine('Failed to update snapbrillia ipc hook cli: ' + e);
+		console.error('Failed to update snapbrillia ipc hook cli:', e);
 	}
 }
