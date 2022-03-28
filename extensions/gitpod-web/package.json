@@ -415,14 +415,14 @@
       "remote": [
         {
           "id": "gitpod.workspace",
-          "name": "Gitpod Workspace"
+          "name": "Snapbrillia Workspace"
         }
       ]
     },
     "authentication": [
       {
         "id": "gitpod",
-        "label": "Gitpod"
+        "label": "Snapbrillia"
       },
       {
         "id": "github",
@@ -431,16 +431,9 @@
     ],
     "walkthroughs": [{
       "id": "gitpod-getstarted",
-      "title": "Get Started with Gitpod",
-      "description": "Explore what Gitpod is and how to get the most out of it.",
+      "title": "Get Started with Snapbrillia",
+      "description": "Explore what Snapbrillia is and how to get the most out of it.",
       "steps": [{
-        "id": "whatisgitpod",
-        "title": "What is Gitpod?",
-        "description": "",
-        "media": {
-          "markdown": "resources/walkthroughs/getstarted/what-is-gitpod.md"
-        }
-      }, {
         "id": "prebuilds",
         "title": "Prebuilds do the heavy lifting",
         "description": "",
@@ -478,7 +471,7 @@
       }]
     }],
     "configuration": {
-      "title": "Gitpod",
+      "title": "Snapbrillia",
       "properties": {
         "gitpod.openInStable.neverPrompt": {
           "type": "boolean",
