@@ -924,8 +924,8 @@ async function doStart(): Promise<IDisposable> {
 		},
 		windowIndicator: {
 			onDidChange: Event.None,
-			label: `$(gitpod) Gitpod`,
-			tooltip: 'Editing on Gitpod'
+			label: `$(gitpod) Snapbrillia`,
+			tooltip: 'Editing on Snapbrillia'
 		},
 		initialColorTheme: {
 			themeType: ColorScheme.LIGHT,
@@ -957,9 +957,9 @@ async function doStart(): Promise<IDisposable> {
 			}
 		},
 		configurationDefaults: {
-			'workbench.colorTheme': 'Gitpod Light',
-			'workbench.preferredLightColorTheme': 'Gitpod Light',
-			'workbench.preferredDarkColorTheme': 'Gitpod Dark',
+			'workbench.colorTheme': 'Snapbrillia Light',
+			'workbench.preferredLightColorTheme': 'Snapbrillia Light',
+			'workbench.preferredDarkColorTheme': 'Snapbrillia Dark',
 		},
 		urlCallbackProvider: new LocalStorageURLCallbackProvider(),
 		credentialsProvider,

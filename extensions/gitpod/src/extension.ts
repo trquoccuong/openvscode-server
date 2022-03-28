@@ -385,7 +385,7 @@ export async function activate(context: vscode.ExtensionContext) {
 				await vscode.window.withProgress({
 					location: vscode.ProgressLocation.Notification,
 					cancellable: true,
-					title: `Connecting to Gitpod workspace: ${params.workspaceId}`
+					title: `Connecting to Snapbrillia workspace: ${params.workspaceId}`
 				}, async (_, token) => {
 					const connection = await withLocalApp(params.gitpodHost, (client, config) => {
 						resolvedConfig = config;
@@ -418,7 +418,7 @@ export async function activate(context: vscode.ExtensionContext) {
 				});
 			} catch (e) {
 				const seeLogs = 'See Logs';
-				vscode.window.showErrorMessage(`Failed to connect to Gitpod workspace ${params.workspaceId}: ${e}`, seeLogs).then(async result => {
+				vscode.window.showErrorMessage(`Failed to connect to Snapbrillia workspace ${params.workspaceId}: ${e}`, seeLogs).then(async result => {
 					if (result !== seeLogs) {
 						return;
 					}
