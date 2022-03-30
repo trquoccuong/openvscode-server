@@ -89,6 +89,8 @@ export interface ISetting {
 	editPresentation?: EditPresentationTypes;
 	defaultValueSource?: string | IExtensionInfo;
 	isLanguageTagSetting?: boolean;
+	categoryOrder?: number;
+	categoryLabel?: string;
 }
 
 export interface IExtensionSetting extends ISetting {
@@ -237,6 +239,7 @@ export interface IPreferencesService {
 	openFolderSettings(options: IOpenSettingsOptions & { folderUri: IOpenSettingsOptions['folderUri'] }): Promise<IEditorPane | undefined>;
 	openGlobalKeybindingSettings(textual: boolean, options?: IKeybindingsEditorOptions): Promise<void>;
 	openDefaultKeybindingsFile(): Promise<IEditorPane | undefined>;
+	openLanguageSpecificSettings(languageId: string, options?: IOpenSettingsOptions): Promise<IEditorPane | undefined>;
 	getEditableSettingsURI(configurationTarget: ConfigurationTarget, resource?: URI): Promise<URI | null>;
 
 	createSplitJsonEditorInput(configurationTarget: ConfigurationTarget, resource: URI): EditorInput;

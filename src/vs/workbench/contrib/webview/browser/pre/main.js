@@ -389,6 +389,12 @@ const initData = {
 
 	/** @type {string | undefined} */
 	themeName: undefined,
+
+	/** @type {boolean} */
+	screenReader: false,
+
+	/** @type {boolean} */
+	reduceMotion: false,
 };
 
 hostMessaging.onMessage('did-load-resource', (_event, data) => {
@@ -421,9 +427,17 @@ const applyStyles = (document, body) => {
 	}
 
 	if (body) {
-		body.classList.remove('vscode-light', 'vscode-dark', 'vscode-high-contrast');
+		body.classList.remove('vscode-light', 'vscode-dark', 'vscode-high-contrast', 'vscode-reduce-motion', 'vscode-using-screen-reader');
 		if (initData.activeTheme) {
 			body.classList.add(initData.activeTheme);
+		}
+
+		if (initData.reduceMotion) {
+			body.classList.add('vscode-reduce-motion');
+		}
+
+		if (initData.screenReader) {
+			body.classList.add('vscode-using-screen-reader');
 		}
 
 		body.dataset.vscodeThemeKind = initData.activeTheme;
@@ -742,6 +756,8 @@ onDomReady(() => {
 		initData.styles = data.styles;
 		initData.activeTheme = data.activeTheme;
 		initData.themeName = data.themeName;
+		initData.reduceMotion = data.reduceMotion;
+		initData.screenReader = data.screenReader;
 
 		const target = getActiveFrame();
 		if (!target) {
