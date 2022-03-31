@@ -53,7 +53,9 @@ function withNodeDefaults(/**@type WebpackConfig*/extConfig) {
 		externals: {
 			'vscode': 'commonjs vscode', // ignored because it doesn't exist,
 			'applicationinsights-native-metrics': 'commonjs applicationinsights-native-metrics', // ignored because we don't ship native module
-			'@opentelemetry/tracing': 'commonjs @opentelemetry/tracing' // ignored because we don't ship this module
+			'@opentelemetry/tracing': 'commonjs @opentelemetry/tracing', // ignored because we don't ship this module
+			'bufferutil': 'commonjs bufferutil',
+			'utf-8-validate': 'commonjs utf-8-validate',
 		},
 		output: {
 			// all output goes into `dist`.
